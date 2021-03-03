@@ -25,6 +25,9 @@ namespace TestMod
 
         public override void Load()
         {
+            System.Console.WriteLine("Launching More Roles Mod");
+            IncreasePlayerLimit();
+
             LoadGameConfig();
 
             CustomOption.ShamelessPlug = false;
@@ -32,6 +35,11 @@ namespace TestMod
             AddCustomServerRegion();
 
             Harmony.PatchAll();
+        }
+
+        private static void IncreasePlayerLimit()
+        {
+            GameOptionsData.MinPlayers = Enumerable.Repeat(4, 16).ToArray();
         }
 
         private void LoadGameConfig()
