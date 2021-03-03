@@ -364,3 +364,5 @@ FodyWeavers.xsd
 # Installer output
 installer-output/
 installer/MoreRolesMod-cache/
+build/
+*.back.aip
