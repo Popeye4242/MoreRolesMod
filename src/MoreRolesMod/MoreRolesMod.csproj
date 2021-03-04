@@ -8,8 +8,8 @@
         <Description>A mod that adds additional roles to Among Us.</Description>
         <Authors>Patrick Spiegel</Authors>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <OutputPath>..\..\build\</OutputPath>
+    <PropertyGroup>
+      <OutputPath>..\..\build\MoreRolesMod\</OutputPath>
     </PropertyGroup>
 
     <ItemGroup>

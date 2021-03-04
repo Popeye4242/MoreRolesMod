@@ -3,21 +3,80 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoreRolesMod", "MoreRolesMod\MoreRolesMod.csproj", "{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoreRolesMod", "MoreRolesMod\MoreRolesMod.csproj", "{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}"
+EndProject
+Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "More Roles Mod Setup", "More Roles Mod Setup\More Roles Mod Setup.aiproj", "{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63} = {55DA2851-1044-4EEE-A5D0-D939A0453E63}
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99} = {11FBC798-BAF5-4EE5-9511-BE6DB0592F99}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{C970AC1C-9D7C-407B-BCB2-7B2D8DC83C42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "More Roles Mod Setup Custom Actions", "More Roles Mod Setup Custom Actions\More Roles Mod Setup Custom Actions.csproj", "{55DA2851-1044-4EEE-A5D0-D939A0453E63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
+		All|x86 = All|x86
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		DefaultBuild|Any CPU = DefaultBuild|Any CPU
+		DefaultBuild|x86 = DefaultBuild|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.All|Any CPU.Build.0 = Release|Any CPU
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.All|x86.ActiveCfg = Debug|Any CPU
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.All|x86.Build.0 = Debug|Any CPU
 		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.Debug|x86.Build.0 = Debug|Any CPU
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.DefaultBuild|Any CPU.ActiveCfg = Debug|Any CPU
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.DefaultBuild|Any CPU.Build.0 = Debug|Any CPU
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.DefaultBuild|x86.ActiveCfg = Debug|Any CPU
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.DefaultBuild|x86.Build.0 = Debug|Any CPU
 		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.Release|x86.ActiveCfg = Release|Any CPU
+		{11FBC798-BAF5-4EE5-9511-BE6DB0592F99}.Release|x86.Build.0 = Release|Any CPU
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.All|Any CPU.ActiveCfg = DefaultBuild
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.All|x86.ActiveCfg = DefaultBuild
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.All|x86.Build.0 = DefaultBuild
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.Debug|Any CPU.ActiveCfg = DefaultBuild
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.Debug|x86.ActiveCfg = DefaultBuild
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.Debug|x86.Build.0 = DefaultBuild
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.DefaultBuild|Any CPU.ActiveCfg = DefaultBuild
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.DefaultBuild|Any CPU.Build.0 = DefaultBuild
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.DefaultBuild|x86.ActiveCfg = DefaultBuild
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.DefaultBuild|x86.Build.0 = DefaultBuild
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.Release|Any CPU.ActiveCfg = DefaultBuild
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.Release|x86.ActiveCfg = DefaultBuild
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2}.Release|x86.Build.0 = DefaultBuild
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.All|Any CPU.ActiveCfg = Debug|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.All|Any CPU.Build.0 = Debug|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.All|x86.ActiveCfg = Debug|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.All|x86.Build.0 = Debug|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.Debug|x86.ActiveCfg = Debug|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.Debug|x86.Build.0 = Debug|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.DefaultBuild|Any CPU.ActiveCfg = Debug|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.DefaultBuild|Any CPU.Build.0 = Debug|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.DefaultBuild|x86.ActiveCfg = Debug|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.DefaultBuild|x86.Build.0 = Debug|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.Release|Any CPU.ActiveCfg = Release|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.Release|x86.ActiveCfg = Release|x86
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F8D54F37-E106-4F98-ADF0-66D12E9A53E2} = {C970AC1C-9D7C-407B-BCB2-7B2D8DC83C42}
+		{55DA2851-1044-4EEE-A5D0-D939A0453E63} = {C970AC1C-9D7C-407B-BCB2-7B2D8DC83C42}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {69220448-1185-4325-BDE1-CE6441E0D297}
