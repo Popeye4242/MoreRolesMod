@@ -362,6 +362,7 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Installer output
+Among Us/
 installer-output/
 More Roles Mod Setup-cache/
 build/

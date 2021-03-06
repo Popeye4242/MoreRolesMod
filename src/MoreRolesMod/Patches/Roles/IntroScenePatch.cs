@@ -27,8 +27,6 @@ namespace MoreRolesMod.Patches.Roles
             __instance.__this.Title.Color = Palette.VisorColor;
             __instance.__this.ImpostorText.Text = "Create a shield to protect a [8DFFFF]Crewmate";
             __instance.__this.BackgroundBar.material.color = Palette.VisorColor;
-
-            PlayerControl.LocalPlayer.MyPhysics.WalkPlayerTo(new UnityEngine.Vector2(100, 0), 5);
         }
     }
 }
