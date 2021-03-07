@@ -14,6 +14,9 @@ using System.IO;
 using UnityEngine;
 using Reactor.Extensions;
 using System.Reflection;
+using BepInEx.Logging;
+using Reactor.Patches;
+using UnityEngine.SceneManagement;
 
 namespace TestMod
 {
@@ -21,30 +24,60 @@ namespace TestMod
     [BepInPlugin(Id)]
     [BepInProcess("Among Us.exe")]
     [BepInDependency(ReactorPlugin.Id)]
-    public class HarmonyMain : BasePlugin
+    public class MoreRolesPlugin : BasePlugin
     {
         public const string Id = "dev.kynet.moreroles";
         private const string KynetServerName = "Kynet (EU)";
-
-        public Harmony Harmony { get; } = new Harmony(Id);
+        private const string ArtifactBuildNumberUrl = "https://jenkins.kynet.dev/job/MoreRolesMod/job/master/lastSuccessfulBuild//buildNumber";
 
         public static readonly GameConfig GameConfig = new GameConfig();
 
+        public MoreRolesPlugin()
+        {
+            Instance = this;
+            Harmony = new Harmony(Id);
+        }
+        public static MoreRolesPlugin Instance { get; private set; }
+
+        public Harmony Harmony { get; }
+
+        public static ManualLogSource Logger => Instance.Log;
+
+        public static MainMenuManager MainMenuManager { get; internal set; }
+
         public override void Load()
         {
-            System.Console.WriteLine("Launching More Roles Mod");
+            Log.LogMessage("Launching More Roles Mod");
             LoadAssets();
-            System.Console.WriteLine("Loaded Assets");
+            Log.LogMessage("Loaded Assets");
             
             LoadGameConfig();
-            System.Console.WriteLine("Loaded Game Config");
+            Log.LogMessage("Loaded Game Config");
 
             CustomOption.ShamelessPlug = false;
 
             AddCustomServerRegion();
-            System.Console.WriteLine("Added Custom Server Regions");
+            Log.LogMessage("Added Custom Server Regions");
 
+            ReactorVersionShower.TextUpdated += UpdatReactVersionShowerText;
             Harmony.PatchAll();
+        }
+
+        private void UpdatReactVersionShowerText(TextRenderer text)
+        {
+            System.Console.WriteLine("Updating version shower");
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
+            string strText = "[FFFFFFFF]More Roles Mod v" + version.ToString(3);
+            using (WebClient client = new WebClient())
+            {
+                string build = client.DownloadString(ArtifactBuildNumberUrl);
+                if (!string.Equals(version.Build, build))
+                {
+                    strText += " ([FF1111FF]Update available[])";
+                }
+            }
+            text.Text = strText + Environment.NewLine + text.Text;;
+
         }
 
         private void LoadAssets()
@@ -52,7 +85,6 @@ namespace TestMod
             string path = Path.Combine(Environment.CurrentDirectory, "Assets", "morerolesmod");
             Assets.Bundle = AssetBundle.LoadFromFile(path);
             Assets.Popeye = Assets.Bundle.LoadAsset<Sprite>("Popeye").DontUnload();
-            System.Console.WriteLine("{1}: {0}", Assets.Popeye == null, Assets.Popeye.name);
         }
 
         private void LoadGameConfig()
@@ -85,7 +117,7 @@ namespace TestMod
             defaultRegions.Insert(1, new RegionInfo(
                 KynetServerName, ip, new[]
                 {
-                    new ServerInfo($"Kynet (EU)", "amongus.kynet.dev", 22023)
+                    new ServerInfo($"Kynet (EU)", Dns.GetHostEntry("amongus.kynet.dev").AddressList.First().ToString(), 22023)
                 })
             );
 
