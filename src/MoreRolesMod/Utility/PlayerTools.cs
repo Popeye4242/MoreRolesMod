@@ -5,9 +5,10 @@ namespace MoreRolesMod.Utility
 {
     public static class PlayerTools
     {
+        public static PlayerControl[] AllPlayerControls => PlayerControl.AllPlayerControls.ToArray();
         internal static PlayerControl GetPlayerById(byte playerId)
         {
-            return (PlayerControl.AllPlayerControls as object as List<PlayerControl>).FirstOrDefault(player => player.PlayerId == playerId);
+            return AllPlayerControls.FirstOrDefault(player => player.PlayerId == playerId);
         }
     }
 }

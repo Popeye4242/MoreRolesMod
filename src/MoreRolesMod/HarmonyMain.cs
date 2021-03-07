@@ -8,6 +8,12 @@ using System.Net;
 using Reactor;
 using Essentials.Options;
 using MoreRolesMod.Config;
+using MoreRolesMod;
+using Reactor.Unstrip;
+using System.IO;
+using UnityEngine;
+using Reactor.Extensions;
+using System.Reflection;
 
 namespace TestMod
 {
@@ -18,6 +24,7 @@ namespace TestMod
     public class HarmonyMain : BasePlugin
     {
         public const string Id = "dev.kynet.moreroles";
+        private const string KynetServerName = "Kynet (EU)";
 
         public Harmony Harmony { get; } = new Harmony(Id);
 
@@ -26,20 +33,26 @@ namespace TestMod
         public override void Load()
         {
             System.Console.WriteLine("Launching More Roles Mod");
-            IncreasePlayerLimit();
-
+            LoadAssets();
+            System.Console.WriteLine("Loaded Assets");
+            
             LoadGameConfig();
+            System.Console.WriteLine("Loaded Game Config");
 
             CustomOption.ShamelessPlug = false;
 
             AddCustomServerRegion();
+            System.Console.WriteLine("Added Custom Server Regions");
 
             Harmony.PatchAll();
         }
 
-        private static void IncreasePlayerLimit()
+        private void LoadAssets()
         {
-            GameOptionsData.MinPlayers = Enumerable.Repeat(4, 16).ToArray();
+            string path = Path.Combine(Environment.CurrentDirectory, "Assets", "morerolesmod");
+            Assets.Bundle = AssetBundle.LoadFromFile(path);
+            Assets.Popeye = Assets.Bundle.LoadAsset<Sprite>("Popeye").DontUnload();
+            System.Console.WriteLine("{1}: {0}", Assets.Popeye == null, Assets.Popeye.name);
         }
 
         private void LoadGameConfig()
@@ -67,6 +80,12 @@ namespace TestMod
                 "Custom", ip, new[]
                 {
                     new ServerInfo($"Custom-Server", ip, GameConfig.Port.Value)
+                })
+            );
+            defaultRegions.Insert(1, new RegionInfo(
+                KynetServerName, ip, new[]
+                {
+                    new ServerInfo($"Kynet (EU)", "amongus.kynet.dev", 22023)
                 })
             );
 
