@@ -14,16 +14,16 @@ pipeline {
     stage('Build') {
       steps {
         dir('src') {
-          bat "\"${tool 'dotnet'}\"dotnet restore MoreRolesMod.sln"
-          bat "\"${tool 'dotnet'}\"dotnet build MoreRolesMod.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=${CurrentModVersion}.${env.BUILD_NUMBER}"
+          bat "\"${tool 'dotnet'}dotnet\" restore MoreRolesMod.sln"
+          bat "\"${tool 'dotnet'}dotnet\" build MoreRolesMod.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=${CurrentModVersion}.${env.BUILD_NUMBER}"
         }
       }
     }
     stage('Make Installer') {
       steps {
         dir('installer') {
-          bat "\"${tool 'Advanced Installer 18.0'}\"advinst.exe /edit \"More Roles Mod Setup.aip\" /SetVersion ${CurrentModVersion}.${env.BUILD_NUMBER}"
-          bat "\"${tool 'Advanced Installer 18.0'}\"advinst.exe /build \"More Roles Mod Setup.aip\""
+          bat "\"${tool 'Advanced Installer 18.0'}advinst.exe\" /edit \"More Roles Mod Setup.aip\" /SetVersion ${CurrentModVersion}.${env.BUILD_NUMBER}"
+          bat "\"${tool 'Advanced Installer 18.0'}advinst.exe\" /build \"More Roles Mod Setup.aip\""
         }
         dir ('installer-output') {
           archiveArtifacts artifacts: 'More Roles Mod Setup.exe', excludes: ''
