@@ -22,8 +22,8 @@ pipeline {
     stage('Make Installer') {
       steps {
         dir('installer') {
-          bat "\"${tool 'Advanced Installer 18.0'}advinst.exe\" /edit \"More Roles Mod Setup.aip\" /SetVersion ${CurrentModVersion}.${env.BUILD_NUMBER}"
-          bat "\"${tool 'Advanced Installer 18.0'}advinst.exe\" /build \"More Roles Mod Setup.aip\""
+          bat "\"${tool 'Advanced Installer 18.0'}AdvancedInstaller.com\" /edit \"More Roles Mod Setup.aip\" /SetVersion ${CurrentModVersion}.${env.BUILD_NUMBER}"
+          bat "\"${tool 'Advanced Installer 18.0'}AdvancedInstaller.com\" /build \"More Roles Mod Setup.aip\""
         }
         dir ('installer-output') {
           archiveArtifacts artifacts: 'More Roles Mod Setup.exe', excludes: ''
