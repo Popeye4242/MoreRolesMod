@@ -1,30 +1,28 @@
 pipeline {
-  agent {
-    label 'Windows Agent'
-  }
+  agent 'any'
   environment {
     AmongUs = "${workspace}\\Among Us"
-    AMONG_US_KEY = credentials('AmongUsKey')
-    CurrentVersion = '1.0.0'
+    CurrentModVersion = '1.0.0'
+    CurrentAmongUsVersion = 'v2020.12.9s'
   }
   stages {
     stage('Prepare Workspace') {
       steps {
-        powershell 'cp -r \"C:\\Among Us\" \"Among Us\"'
+        powershell "cp -r \"C:\\Among Us ${CurrentAmongUsVersion}\" \"Among Us\""
       }
     }
     stage('Build') {
       steps {
         dir('src') {
-          bat 'dotnet restore MoreRolesMod.sln'
-          bat "dotnet build MoreRolesMod.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=${CurrentVersion}.${env.BUILD_NUMBER}"
+          bat "\"${tool 'dotnet'}\" restore MoreRolesMod.sln"
+          bat "\"${tool 'dotnet'}\" build MoreRolesMod.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=${CurrentModVersion}.${env.BUILD_NUMBER}"
         }
       }
     }
     stage('Make Installer') {
       steps {
         dir('installer') {
-          bat "\"${tool 'Advanced Installer 18.0'}\" /edit \"More Roles Mod Setup.aip\" /SetVersion ${CurrentVersion}.${env.BUILD_NUMBER}"
+          bat "\"${tool 'Advanced Installer 18.0'}\" /edit \"More Roles Mod Setup.aip\" /SetVersion ${CurrentModVersion}.${env.BUILD_NUMBER}"
           bat "\"${tool 'Advanced Installer 18.0'}\" /build \"More Roles Mod Setup.aip\""
         }
         dir ('installer-output') {
