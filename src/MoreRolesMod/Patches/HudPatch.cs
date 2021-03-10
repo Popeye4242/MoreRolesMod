@@ -25,7 +25,7 @@ namespace MoreRolesMod.Patches
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudUpdatePatch
     {
-        public static ExampleComponent PopeyeButton { get; set; }
+        public static PopeyeButton PopeyeButton { get; set; }
         public static Vector2 PositionOffset = new Vector2(0.125f, 0.125f);
         public static float MaxTimer = 5f;
         public static float Timer = 0f;
@@ -70,14 +70,12 @@ namespace MoreRolesMod.Patches
 
         private static void AddPopeyeButton()
         {
-            PopeyeButton = HudManager.gameObject.AddComponent<ExampleComponent>();
-            var local = PopeyeButton.transform.localPosition;
-            PopeyeButton.transform.localPosition = new Vector3(local.x -500, local.y -100, local.z);
+            PopeyeButton = HudManager.gameObject.AddComponent<PopeyeButton>();
+            
         }
+
         private static void UpdatePopeyeButton()
         {
-            var local = PopeyeButton.transform.localPosition;
-            System.Console.WriteLine("{0} {1} {2}", local.x, local.y, local.z);
         }
     }
 }
