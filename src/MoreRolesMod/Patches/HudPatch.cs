@@ -5,7 +5,7 @@ using Reactor.Unstrip;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TestMod;
+using MoreRolesMod;
 using UnityEngine;
 
 namespace MoreRolesMod.Patches

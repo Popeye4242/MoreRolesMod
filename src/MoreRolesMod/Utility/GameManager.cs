@@ -7,5 +7,7 @@ namespace MoreRolesMod.Utility
     public static class GameManager
     {
         public static List<PlayerControl> LocalPlayers = new List<PlayerControl>();
+
+
     }
 }

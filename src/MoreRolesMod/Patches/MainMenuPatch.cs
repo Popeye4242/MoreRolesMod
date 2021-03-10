@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TestMod;
+using MoreRolesMod;
 
 namespace MoreRolesMod.Patches
 {
