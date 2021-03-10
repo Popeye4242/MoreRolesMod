@@ -3,7 +3,7 @@ pipeline {
   environment {
     AmongUs = "${workspace}\\Among Us"
     CurrentModVersion = '1.0.0'
-    CurrentAmongUsVersion = 'v2020.12.9s'
+    CurrentAmongUsVersion = 'v2021.3.5s'
   }
   stages {
     stage('Prepare Workspace') {
