@@ -14,13 +14,21 @@ namespace MoreRolesMod
             System.Console.WriteLine("Updating version shower");
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             string strText = "[FFFFFFFF]More Roles Mod v" + version.ToString(3);
-            using (WebClient client = new WebClient())
+            try
             {
-                string build = client.DownloadString(ArtifactBuildNumberUrl);
-                if (!string.Equals(version.Build, build))
+
+                using (WebClient client = new WebClient())
                 {
-                    strText += " ([FF1111FF]Update available[])";
+                    string build = client.DownloadString(ArtifactBuildNumberUrl);
+                    if (!string.Equals(version.Build, build))
+                    {
+                        strText += " ([FF1111FF]Update available[])";
+                    }
                 }
+            }
+            catch (WebException ex)
+            {
+                Log.LogError(string.Format("Failed to retrieve current mod version: {0}", ex.Message));
             }
             text.Text = strText + Environment.NewLine + text.Text; ;
 

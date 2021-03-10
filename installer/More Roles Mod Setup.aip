@@ -47,6 +47,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
     <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="Assets_Dir" Directory_Parent="APPDIR" DefaultDir="Assets"/>
     <ROW Directory="BepInEx_Dir" Directory_Parent="APPDIR" DefaultDir="BepInEx"/>
     <ROW Directory="Browsers_1_Dir" Directory_Parent="__1_Dir" DefaultDir="Browsers"/>
     <ROW Directory="Browsers_2_Dir" Directory_Parent="__2_Dir" DefaultDir="Browsers"/>
@@ -183,6 +184,7 @@
     <ROW Component="config" ComponentId="{077A1178-0D88-4BF5-9463-EB26AA6B35F2}" Directory_="mono_1_Dir" Attributes="0" KeyPath="config" Type="0"/>
     <ROW Component="config.xml" ComponentId="{B2441EAD-A11D-4D65-BC0A-3767D2503678}" Directory_="mconfig_Dir" Attributes="0" KeyPath="config.xml" Type="0"/>
     <ROW Component="mono2.0sgen.dll" ComponentId="{86E960DA-4587-4EF0-A0D9-4563FA0439D3}" Directory_="EmbedRuntime_Dir" Attributes="0" KeyPath="mono2.0sgen.dll"/>
+    <ROW Component="morerolesmod" ComponentId="{CC0D3C03-3515-446D-8B05-E631240968D2}" Directory_="Assets_Dir" Attributes="0" KeyPath="morerolesmod" Type="0"/>
     <ROW Component="mscorlib.dll" ComponentId="{977A2E2D-07F9-4B9B-ADA6-46D54721446F}" Directory_="Managed_Dir" Attributes="0" KeyPath="mscorlib.dll"/>
     <ROW Component="netstandard.dll" ComponentId="{E0F0E69A-A5F6-45CC-BAE3-B632DD3D7CD0}" Directory_="Managed_Dir" Attributes="0" KeyPath="netstandard.dll"/>
     <ROW Component="steam_appid.txt" ComponentId="{AE331C3F-5811-467F-8FA5-46BD8D891F38}" Directory_="APPDIR" Attributes="0" KeyPath="steam_appid.txt" Type="0"/>
@@ -317,6 +319,7 @@
     <ROW File="MoreRolesMod2020.12.9s.dll" Component_="MoreRolesMod2020.12.9s.dll" FileName="MORERO~1.DLL|MoreRolesMod-2020.12.9s.dll" Attributes="0" SourcePath="..\build\MoreRolesMod\netstandard2.1\reobfuscated\MoreRolesMod-2020.12.9s.dll" SelfReg="false"/>
     <ROW File="doorstop_config.ini" Component_="steam_appid.txt" FileName="DOORST~1.INI|doorstop_config.ini" Attributes="0" SourcePath="..\Lib\doorstop_config.ini" SelfReg="false"/>
     <ROW File="browscap.ini" Component_="config" FileName="browscap.ini" Attributes="0" SourcePath="..\Lib\mono\MonoBleedingEdge\etc\mono\browscap.ini" SelfReg="false"/>
+    <ROW File="morerolesmod" Component_="morerolesmod" FileName="MORERO~1|morerolesmod" Attributes="0" SourcePath="..\Assets\morerolesmod" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -585,6 +588,7 @@
     <ROW Feature_="MainFeature" Component_="AI_CustomARPName"/>
     <ROW Feature_="MainFeature" Component_="AI_DisableModify"/>
     <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
+    <ROW Feature_="MainFeature" Component_="morerolesmod"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="icons8amongus50.exe" SourcePath="icons8-among-us-50.ico" Index="0"/>

@@ -11,28 +11,7 @@ namespace MoreRolesMod
 
         private void RegisterColors()
         {
-            string[] array = new string[]
-            {
-                "RED",
-                "BLUE",
-                "GRN",
-                "PINK",
-                "ORNG",
-                "YLOW",
-                "BLAK",
-                "WHTE",
-                "PURP",
-                "BRWN",
-                "CYAN",
-                "LIME",
-                "MELON",
-                "POOP",
-                "LTBLUE",
-                "BEIGE",
-                "LTPINK",
-                "CHELOU"
-
-            };
+            StringNames[] array = Palette.ShortColorNames;
             Color32[] array2 = new Color32[]
             {
                 new Color32(198, 17, 17, byte.MaxValue),

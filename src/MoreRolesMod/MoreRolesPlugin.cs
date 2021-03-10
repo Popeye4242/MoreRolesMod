@@ -6,7 +6,6 @@ using System;
 using System.Linq;
 using System.Net;
 using Reactor;
-using Essentials.Options;
 using MoreRolesMod.Config;
 using MoreRolesMod;
 using Reactor.Unstrip;
@@ -55,7 +54,6 @@ namespace MoreRolesMod
             RegisterColors();
 
             // Disable twitch advertisement. Credited author elsewhere
-            CustomOption.ShamelessPlug = false;
             ReactorVersionShower.TextUpdated += UpdatReactVersionShowerText;
             RegisterInIl2CppAttribute.Register();
             RegisterCustomRpcAttribute.Register(this);

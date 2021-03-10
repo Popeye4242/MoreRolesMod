@@ -12,7 +12,7 @@ namespace MoreRolesMod.Patches
     public class SetInfectedPatch
     {
 
-        public static void Postfix(Il2CppReferenceArray<GameData.PlayerInfo> JPGEIBIBJPJ)
+        public static void Postfix(Il2CppReferenceArray<GameData.Nested_1> FMAOEJEHPAO)
         {
             System.Console.WriteLine("Set Infected being executed by {0}", PlayerControl.LocalPlayer.name);
         }

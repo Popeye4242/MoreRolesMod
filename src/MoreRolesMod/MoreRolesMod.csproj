@@ -2,8 +2,8 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <Version>1.0.0</Version>
-        <GameVersion>2020.12.9s</GameVersion>
-        <Mappings>NuclearPowered/Mappings:0.1.0-alpha.2</Mappings>
+        <GameVersion>2021.3.5s</GameVersion>
+        <Mappings>NuclearPowered/Mappings:0.2.0</Mappings>
 
         <Description>A mod that adds additional roles to Among Us.</Description>
         <Authors>Patrick Spiegel</Authors>
@@ -19,9 +19,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="Essentials">
+      <!--<Reference Include="Essentials">
         <HintPath>$(AmongUs)\BepInEx\plugins\Essentials-$(GameVersion).dll</HintPath>
-      </Reference>
+      </Reference>-->
     </ItemGroup>
 
     <Target Name="Copy" AfterTargets="Reobfuscate">

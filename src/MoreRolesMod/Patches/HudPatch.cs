@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Text;
 using MoreRolesMod;
 using UnityEngine;
+using InnerNet;
+using MoreRolesMod.Components;
 
 namespace MoreRolesMod.Patches
 {
@@ -23,7 +25,7 @@ namespace MoreRolesMod.Patches
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudUpdatePatch
     {
-        public static KillButtonManager PopeyeButton { get; set; }
+        public static ExampleComponent PopeyeButton { get; set; }
         public static Vector2 PositionOffset = new Vector2(0.125f, 0.125f);
         public static float MaxTimer = 5f;
         public static float Timer = 0f;
@@ -40,7 +42,7 @@ namespace MoreRolesMod.Patches
         {
 
             HudManager = __instance;
-            if (AmongUsClient.Instance.GameMode == GameModes.FreePlay || AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started)
+            if (AmongUsClient.Instance.GameMode == GameModes.FreePlay || AmongUsClient.Instance.GameState == InnerNetClient.Nested_0.Started)
             {
                 if (PopeyeButton != null)
                 {
@@ -54,13 +56,13 @@ namespace MoreRolesMod.Patches
                     }
                 }
             }
-            else if (AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Joined)
+            else if (AmongUsClient.Instance.GameState == InnerNetClient.Nested_0.Joined)
             {
             }
-            else if (AmongUsClient.Instance.GameState == InnerNetClient.GameStates.NotJoined)
+            else if (AmongUsClient.Instance.GameState == InnerNetClient.Nested_0.NotJoined)
             {
             }
-            else if (AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Ended)
+            else if (AmongUsClient.Instance.GameState == InnerNetClient.Nested_0.Ended)
             {
             }
         }
@@ -68,33 +70,14 @@ namespace MoreRolesMod.Patches
 
         private static void AddPopeyeButton()
         {
-            PopeyeButton = new KillButtonManager();
-            PopeyeButton = UnityEngine.Object.Instantiate(HudManager.KillButton, HudManager.transform);
-            PopeyeButton.gameObject.SetActive(true);
-            PopeyeButton.renderer.enabled = true;
-            PopeyeButton.renderer.sprite = Assets.Popeye;
-            PassiveButton button = PopeyeButton.GetComponent<PassiveButton>();
-            button.OnClick.RemoveAllListeners();
-            button.OnClick.AddListener((UnityEngine.Events.UnityAction)OnClick);
-            MoreRolesPlugin.Logger.LogDebug("Added Popeye Button");
+            PopeyeButton = HudManager.gameObject.AddComponent<ExampleComponent>();
+            var local = PopeyeButton.transform.localPosition;
+            PopeyeButton.transform.localPosition = new Vector3(local.x -500, local.y -100, local.z);
         }
         private static void UpdatePopeyeButton()
         {
-            if (PopeyeButton.transform.localPosition.x > 0f)
-            {
-                var v = new Vector3((PopeyeButton.transform.localPosition.x + 1.3f) * -1, PopeyeButton.transform.localPosition.y, PopeyeButton.transform.localPosition.z);
-                PopeyeButton.transform.localPosition = v + new Vector3(PositionOffset.x, PositionOffset.y);
-            }
-
-            if (PlayerControl.LocalPlayer.CanMove)
-                Timer -= Time.deltaTime;
-            PopeyeButton.renderer.color = Palette.EnabledColor;
-
-
-            PopeyeButton.gameObject.SetActive(true);
-            PopeyeButton.renderer.enabled = true;
-            PopeyeButton.renderer.material.SetFloat("_Desat", 0f);
-            PopeyeButton.SetCoolDown(Timer, MaxTimer);
+            var local = PopeyeButton.transform.localPosition;
+            System.Console.WriteLine("{0} {1} {2}", local.x, local.y, local.z);
         }
     }
 }

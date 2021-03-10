@@ -18,7 +18,7 @@ namespace MoreRolesMod.Rpc
 
         public override void Handle(PlayerControl innerNetObject, TestData data)
         {
-            MoreRolesPlugin.Logger.LogWarning($"{innerNetObject.Data.PlayerId} sent \"{data.Message}\"");
+            MoreRolesPlugin.Logger.LogWarning($"{innerNetObject.Data.FMAAJCIEMEH} sent \"{data.Message}\"");
         }
 
         public override TestData Read(MessageReader reader)

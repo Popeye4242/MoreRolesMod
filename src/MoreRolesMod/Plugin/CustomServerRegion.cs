@@ -23,17 +23,8 @@ namespace MoreRolesMod
                 }
             }
 
-            defaultRegions.Insert(0, new RegionInfo(
-                "Custom", ip, new[]
-                {
-                    new ServerInfo($"Custom-Server", ip, GameConfig.Port.Value)
-                })
-            );
-            defaultRegions.Insert(1, new RegionInfo(
-                KynetServerName, ip, new[]
-                {
-                    new ServerInfo($"Kynet (EU)", Dns.GetHostEntry("amongus.kynet.dev").AddressList.First().ToString(), 22023)
-                })
+            defaultRegions.Insert(1, new DnsRegionInfo(
+                KynetServerName, ip, StringNames.GameCustomSettings, Dns.GetHostEntry("amongus.kynet.dev").AddressList.First().ToString()).Duplicate()
             );
 
             ServerManager.DefaultRegions = defaultRegions.ToArray();

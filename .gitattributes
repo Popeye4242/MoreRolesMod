@@ -4,3 +4,4 @@
 *.dll filter=lfs diff=lfs merge=lfs -text
 *.db filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
+morerolesmod filter=lfs diff=lfs merge=lfs -text
