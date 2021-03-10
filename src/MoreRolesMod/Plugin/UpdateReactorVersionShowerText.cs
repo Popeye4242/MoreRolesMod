@@ -9,7 +9,7 @@ namespace MoreRolesMod
     public partial class MoreRolesPlugin
     {
 
-        private void UpdatReactVersionShowerText(TextRenderer text)
+        private async void UpdatReactVersionShowerText(TextRenderer text)
         {
             System.Console.WriteLine("Updating version shower");
             var version = Assembly.GetExecutingAssembly().GetName().Version;
@@ -19,7 +19,7 @@ namespace MoreRolesMod
 
                 using (WebClient client = new WebClient())
                 {
-                    string build = client.DownloadString(ArtifactBuildNumberUrl);
+                    string build = await client.DownloadStringTaskAsync(ArtifactBuildNumberUrl);
                     if (!string.Equals(version.Build, build))
                     {
                         strText += " ([FF1111FF]Update available[])";

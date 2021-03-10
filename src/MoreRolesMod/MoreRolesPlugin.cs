@@ -53,7 +53,6 @@ namespace MoreRolesMod
             AddCustomServerRegion();
             RegisterColors();
 
-            // Disable twitch advertisement. Credited author elsewhere
             ReactorVersionShower.TextUpdated += UpdatReactVersionShowerText;
             RegisterInIl2CppAttribute.Register();
             RegisterCustomRpcAttribute.Register(this);

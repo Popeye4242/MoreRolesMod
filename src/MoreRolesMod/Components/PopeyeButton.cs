@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnhollowerBaseLib.Attributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MoreRolesMod.Components
 {
@@ -12,8 +13,8 @@ namespace MoreRolesMod.Components
     public class PopeyeButton : MonoBehaviour
     {
 
-        private GameObject button = null;
         private SpriteRenderer m_SpriteRenderer = null;
+        private BoxCollider2D m_collider = null;
 
         [HideFromIl2Cpp]
         public MoreRolesPlugin Plugin { get; internal set; }
@@ -23,18 +24,34 @@ namespace MoreRolesMod.Components
         {
         }
 
+        public void Awake()
+        {
+            gameObject.layer = Layers.UI;
+            var corner = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
+            var scale = gameObject.transform.lossyScale;
+
+            gameObject.transform.position = corner + new Vector3(scale.x, scale.y);
+
+            m_SpriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+            m_SpriteRenderer.sprite = Assets.Popeye;
+
+            m_collider = gameObject.AddComponent<BoxCollider2D>();
+            m_collider.size = new Vector2(100, 100);
+
+        }
+
+        public void OnMouseDown()
+        {
+            System.Console.WriteLine("Squished that cat"); ;
+        }
+
         public void Start()
         {
-            button = Instantiate(new GameObject(), gameObject.transform);
-            button.name = "asdfg";
-            var local = button.transform.localPosition;
-            // make button half size
-            button.transform.localScale /= 2;
-            button.transform.localPosition = new Vector3((local.x + 1.3f) * -1, local.y, local.z) + new Vector3(0.125f, 0.125f);
-
-            m_SpriteRenderer = button.AddComponent<SpriteRenderer>();
-            m_SpriteRenderer.sprite = Assets.Popeye;
+            gameObject.SetActive(true);
         }
+
+
+
         public void Update()
         {
 

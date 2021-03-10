@@ -25,17 +25,7 @@ namespace MoreRolesMod.Patches
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudUpdatePatch
     {
-        public static PopeyeButton PopeyeButton { get; set; }
-        public static Vector2 PositionOffset = new Vector2(0.125f, 0.125f);
-        public static float MaxTimer = 5f;
-        public static float Timer = 0f;
-
-        public static void OnClick()
-        {
-            MoreRolesPlugin.Logger.LogDebug("Clicked Popeye Button!");
-        }
-
-
+        public static GameObject PopeyeButton { get; set; }
         static HudManager HudManager { get; set; }
         static KillButtonManager KillButton => HudManager.KillButton;
         static void Postfix(HudManager __instance)
@@ -70,8 +60,9 @@ namespace MoreRolesMod.Patches
 
         private static void AddPopeyeButton()
         {
-            PopeyeButton = HudManager.gameObject.AddComponent<PopeyeButton>();
-            
+            PopeyeButton = UnityEngine.Object.Instantiate(new GameObject(), HudManager.gameObject.transform);
+            PopeyeButton.AddComponent<PopeyeButton>();
+
         }
 
         private static void UpdatePopeyeButton()

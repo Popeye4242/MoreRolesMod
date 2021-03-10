@@ -89,7 +89,6 @@
     <ROW Component="DefaultWsdlHelpGenerator.aspx" ComponentId="{8756A37F-5134-455C-8A1B-163F624BB12D}" Directory_="__Dir" Attributes="0" KeyPath="DefaultWsdlHelpGenerator.aspx" Type="0"/>
     <ROW Component="DefaultWsdlHelpGenerator.aspx_1" ComponentId="{B997654C-A164-445E-A667-D8A6729EA18E}" Directory_="__1_Dir" Attributes="0" KeyPath="DefaultWsdlHelpGenerator.aspx_1" Type="0"/>
     <ROW Component="DefaultWsdlHelpGenerator.aspx_2" ComponentId="{3DF7BD5D-E022-4DF9-A345-038243D8504A}" Directory_="__2_Dir" Attributes="0" KeyPath="DefaultWsdlHelpGenerator.aspx_2" Type="0"/>
-    <ROW Component="Essentials2020.12.9s.dll" ComponentId="{24D5FEA7-E74B-42F5-9C72-14D3ABCEBFFC}" Directory_="plugins_Dir" Attributes="0" KeyPath="Essentials2020.12.9s.dll"/>
     <ROW Component="Harmony.dll" ComponentId="{72C1096B-0F26-40FF-927F-1F2F04BF382C}" Directory_="core_Dir" Attributes="0" KeyPath="Harmony.dll"/>
     <ROW Component="Iced.dll" ComponentId="{31CBEA45-9108-4FCE-A235-2D5A82F8E9E9}" Directory_="core_Dir" Attributes="0" KeyPath="Iced.dll"/>
     <ROW Component="Il2Cpp.TlsAdapter.dll" ComponentId="{E59230E4-F87E-41FC-BA5B-2ED59D081A88}" Directory_="core_Dir" Attributes="0" KeyPath="Il2Cpp.TlsAdapter.dll"/>
@@ -103,9 +102,9 @@
     <ROW Component="MonoMod.RuntimeDetour.dll" ComponentId="{7CC77EE8-DCA8-41E8-9432-30B2A2501B33}" Directory_="core_Dir" Attributes="0" KeyPath="MonoMod.RuntimeDetour.dll"/>
     <ROW Component="MonoMod.Utils.dll" ComponentId="{AA102DDE-3F32-46BB-9399-735E8F3BD9BD}" Directory_="core_Dir" Attributes="0" KeyPath="MonoMod.Utils.dll"/>
     <ROW Component="MonoPosixHelper.dll" ComponentId="{AD54D0C8-1FAA-45DD-B41A-857986CE5DBE}" Directory_="EmbedRuntime_Dir" Attributes="0" KeyPath="MonoPosixHelper.dll"/>
-    <ROW Component="MoreRolesMod2020.12.9s.dll" ComponentId="{D6ADE7F9-809C-4FA8-9D91-F661FD860407}" Directory_="plugins_Dir" Attributes="0" KeyPath="MoreRolesMod2020.12.9s.dll"/>
+    <ROW Component="MoreRolesMod2021.3.5s.dll" ComponentId="{D6ADE7F9-809C-4FA8-9D91-F661FD860407}" Directory_="plugins_Dir" Attributes="0" KeyPath="MoreRolesMod2021.3.5s.dll"/>
     <ROW Component="ProductInformation" ComponentId="{8EA8276C-E2BF-4817-ACAE-2C8E92204D7F}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
-    <ROW Component="Reactor2020.12.9s.dll" ComponentId="{78287C41-93B8-4AEF-A317-F54B9B06CEC4}" Directory_="plugins_Dir" Attributes="0" KeyPath="Reactor2020.12.9s.dll"/>
+    <ROW Component="Reactor2021.3.5s.dll" ComponentId="{78287C41-93B8-4AEF-A317-F54B9B06CEC4}" Directory_="plugins_Dir" Attributes="0" KeyPath="Reactor2021.3.5s.dll"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{342A8A80-A573-431B-A4E9-9F94E010B3D6}" Directory_="SHORTCUTDIR" Attributes="0"/>
     <ROW Component="SemVer.dll" ComponentId="{AFD7A1DD-A1F1-40CD-982D-DDE5070B661A}" Directory_="core_Dir" Attributes="0" KeyPath="SemVer.dll"/>
     <ROW Component="System.Configuration.dll" ComponentId="{F1366883-8B87-4B42-A4DE-930CE40EF002}" Directory_="Managed_Dir" Attributes="0" KeyPath="System.Configuration.dll"/>
@@ -220,8 +219,7 @@
     <ROW File="SemVer.dll" Component_="SemVer.dll" FileName="SemVer.dll" Attributes="0" SourcePath="..\Lib\BepInEx\core\SemVer.dll" SelfReg="false"/>
     <ROW File="UnhollowerBaseLib.dll" Component_="UnhollowerBaseLib.dll" FileName="UNHOLL~1.DLL|UnhollowerBaseLib.dll" Attributes="0" SourcePath="..\Lib\BepInEx\core\UnhollowerBaseLib.dll" SelfReg="false"/>
     <ROW File="UnhollowerRuntimeLib.dll" Component_="UnhollowerRuntimeLib.dll" FileName="UNHOLL~2.DLL|UnhollowerRuntimeLib.dll" Attributes="0" SourcePath="..\Lib\BepInEx\core\UnhollowerRuntimeLib.dll" SelfReg="false"/>
-    <ROW File="Essentials2020.12.9s.dll" Component_="Essentials2020.12.9s.dll" FileName="ESSENT~1.DLL|Essentials-2020.12.9s.dll" Attributes="0" SourcePath="..\Lib\BepInEx\plugins\Essentials-2020.12.9s.dll" SelfReg="false"/>
-    <ROW File="Reactor2020.12.9s.dll" Component_="Reactor2020.12.9s.dll" FileName="REACTO~1.DLL|Reactor-2020.12.9s.dll" Attributes="0" SourcePath="..\Lib\BepInEx\plugins\Reactor-2020.12.9s.dll" SelfReg="false"/>
+    <ROW File="Reactor2021.3.5s.dll" Component_="Reactor2021.3.5s.dll" FileName="REACTO~1.DLL|Reactor-2021.3.5s.dll" Attributes="0" SourcePath="..\Lib\BepInEx\plugins\Reactor-2021.3.5s.dll" SelfReg="false"/>
     <ROW File="UnityEngine.AccessibilityModule.dll" Component_="UnityEngine.AccessibilityModule.dll" FileName="UNITYE~1.DLL|UnityEngine.AccessibilityModule.dll" Attributes="0" SourcePath="..\Lib\BepInEx\unity-libs\UnityEngine.AccessibilityModule.dll" SelfReg="false"/>
     <ROW File="UnityEngine.AIModule.dll" Component_="UnityEngine.AIModule.dll" FileName="UNITYE~2.DLL|UnityEngine.AIModule.dll" Attributes="0" SourcePath="..\Lib\BepInEx\unity-libs\UnityEngine.AIModule.dll" SelfReg="false"/>
     <ROW File="UnityEngine.AndroidJNIModule.dll" Component_="UnityEngine.AndroidJNIModule.dll" FileName="UNITYE~3.DLL|UnityEngine.AndroidJNIModule.dll" Attributes="0" SourcePath="..\Lib\BepInEx\unity-libs\UnityEngine.AndroidJNIModule.dll" SelfReg="false"/>
@@ -316,7 +314,7 @@
     <ROW File="web.config_2" Component_="DefaultWsdlHelpGenerator.aspx_2" FileName="WEB~1.CON|web.config" Attributes="0" SourcePath="..\Lib\mono\MonoBleedingEdge\etc\mono\4.5\web.config" SelfReg="false"/>
     <ROW File="config" Component_="config" FileName="config" Attributes="0" SourcePath="..\Lib\mono\MonoBleedingEdge\etc\mono\config" SelfReg="false"/>
     <ROW File="config.xml" Component_="config.xml" FileName="config.xml" Attributes="0" SourcePath="..\Lib\mono\MonoBleedingEdge\etc\mono\mconfig\config.xml" SelfReg="false"/>
-    <ROW File="MoreRolesMod2020.12.9s.dll" Component_="MoreRolesMod2020.12.9s.dll" FileName="MORERO~1.DLL|MoreRolesMod-2020.12.9s.dll" Attributes="0" SourcePath="..\build\MoreRolesMod\netstandard2.1\reobfuscated\MoreRolesMod-2020.12.9s.dll" SelfReg="false"/>
+    <ROW File="MoreRolesMod2021.3.5s.dll" Component_="MoreRolesMod2021.3.5s.dll" FileName="MORERO~1.DLL|MoreRolesMod-2021.3.5s.dll" Attributes="0" SourcePath="..\build\MoreRolesMod\netstandard2.1\reobfuscated\MoreRolesMod-2021.3.5s.dll" SelfReg="false"/>
     <ROW File="doorstop_config.ini" Component_="steam_appid.txt" FileName="DOORST~1.INI|doorstop_config.ini" Attributes="0" SourcePath="..\Lib\doorstop_config.ini" SelfReg="false"/>
     <ROW File="browscap.ini" Component_="config" FileName="browscap.ini" Attributes="0" SourcePath="..\Lib\mono\MonoBleedingEdge\etc\mono\browscap.ini" SelfReg="false"/>
     <ROW File="morerolesmod" Component_="morerolesmod" FileName="MORERO~1|morerolesmod" Attributes="0" SourcePath="..\Assets\morerolesmod" SelfReg="false"/>
@@ -495,8 +493,7 @@
     <ROW Feature_="MainFeature" Component_="SemVer.dll"/>
     <ROW Feature_="MainFeature" Component_="UnhollowerBaseLib.dll"/>
     <ROW Feature_="MainFeature" Component_="UnhollowerRuntimeLib.dll"/>
-    <ROW Feature_="MainFeature" Component_="Essentials2020.12.9s.dll"/>
-    <ROW Feature_="MainFeature" Component_="Reactor2020.12.9s.dll"/>
+    <ROW Feature_="MainFeature" Component_="Reactor2021.3.5s.dll"/>
     <ROW Feature_="MainFeature" Component_="UnityEngine.AccessibilityModule.dll"/>
     <ROW Feature_="MainFeature" Component_="UnityEngine.AIModule.dll"/>
     <ROW Feature_="MainFeature" Component_="UnityEngine.AndroidJNIModule.dll"/>
@@ -582,7 +579,7 @@
     <ROW Feature_="MainFeature" Component_="DefaultWsdlHelpGenerator.aspx_2"/>
     <ROW Feature_="MainFeature" Component_="config"/>
     <ROW Feature_="MainFeature" Component_="config.xml"/>
-    <ROW Feature_="MainFeature" Component_="MoreRolesMod2020.12.9s.dll"/>
+    <ROW Feature_="MainFeature" Component_="MoreRolesMod2021.3.5s.dll"/>
     <ROW Feature_="MainFeature" Component_="AI_ExePath"/>
     <ROW Feature_="A918597FE054CCCB65ABDBA0AD8F63C" Component_="A918597FE054CCCB65ABDBA0AD8F63C"/>
     <ROW Feature_="MainFeature" Component_="AI_CustomARPName"/>
