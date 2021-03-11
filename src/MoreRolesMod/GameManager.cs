@@ -12,6 +12,7 @@ namespace MoreRolesMod
         internal static void ResetGame()
         {
             PlayerRoles.Clear();
+            ClosestPlayer = default;
         }
 
         internal static void UpdateGame()
@@ -32,12 +33,16 @@ namespace MoreRolesMod
         {
             var players = PlayerControl.AllPlayerControls
                 .ToArray()
-                .Where(x => !x.Data.IsDead && x != PlayerControl.LocalPlayer)
+                .Where(x => !x.Data.IsDead && !x.AmOwner)
                 .Select(x => (Player: x, Distance: GetDistanceBetweenPlayers(x, PlayerControl.LocalPlayer)));
             if (players.Any())
             {
                 var min = players.Min(x => x.Distance);
                 ClosestPlayer = players.First(x => x.Distance == min);
+            }
+            else
+            {
+                // game is not ready yet
             }
 
         }
