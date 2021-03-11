@@ -8,7 +8,7 @@ using UnityEngine;
 namespace MoreRolesMod.Patches
 {
     [HarmonyPatch(typeof(IntroCutscene.Nested_0), nameof(IntroCutscene.Nested_0.MoveNext))]
-    public class IntroScenePatch
+    public class SheriffIntroScenePatch
     {
         static bool Prefix(IntroCutscene.Nested_0 __instance)
         {

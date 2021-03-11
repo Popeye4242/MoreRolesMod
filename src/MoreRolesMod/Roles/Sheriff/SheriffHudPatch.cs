@@ -7,9 +7,8 @@ namespace MoreRolesMod.Roles.Sheriff
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class HudUpdatePatch
     {
-        public static GameObject SheriffButton { get; set; }
+        public static KillButtonManager SheriffKillButton { get; set; }
         static HudManager HudManager { get; set; }
-        static KillButtonManager KillButton => HudManager.KillButton;
         static void Postfix(HudManager __instance)
         {
 
@@ -19,10 +18,9 @@ namespace MoreRolesMod.Roles.Sheriff
                 GameManager.UpdateGame();
                 if (PlayerControl.LocalPlayer.HasRole(Role.Sheriff))
                 {
-                    if (SheriffButton == null)
+                    if (SheriffKillButton == null)
                     {
                         AddPopeyeButton();
-                        PlayerControl.LocalPlayer.nameText.Color = new Color(40f / 255f, 198f / 255f, 0, 1);
                     }
                 }
             }
@@ -31,9 +29,14 @@ namespace MoreRolesMod.Roles.Sheriff
 
         private static void AddPopeyeButton()
         {
-            SheriffButton = UnityEngine.Object.Instantiate(new GameObject(), HudManager.gameObject.transform);
-            SheriffButton.AddComponent<SheriffKillButton>();
+            var killButton = SheriffKillButton = HudManager.KillButton;
+            HudManager.KillButton.gameObject.AddComponent<SheriffKillButton>();;
 
+            killButton.gameObject.SetActive(true);
+            killButton.isActive = true;
+
+            // change player name color 
+            PlayerControl.LocalPlayer.nameText.Color = Sheriff.SheriffColor;
         }
     }
 }

@@ -12,13 +12,9 @@ namespace MoreRolesMod.Roles.Sheriff
     [RegisterInIl2Cpp]
     public class SheriffKillButton : MonoBehaviour
     {
-
-        private SpriteRenderer m_SpriteRenderer = null;
-        private BoxCollider2D m_collider = null;
-
         [HideFromIl2Cpp]
         public MoreRolesPlugin Plugin { get; internal set; }
-        public SpriteRenderer renderer => m_SpriteRenderer;
+        private float m_cooldown = 10f;
 
         public SheriffKillButton(IntPtr handle) : base(handle)
         {
@@ -26,18 +22,6 @@ namespace MoreRolesMod.Roles.Sheriff
 
         public void Awake()
         {
-            gameObject.layer = Layers.UI;
-            var corner = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-            var scale = gameObject.transform.lossyScale;
-
-            gameObject.transform.position = corner + new Vector3(scale.x, scale.y);
-
-            m_SpriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-            m_SpriteRenderer.sprite = HudManager.Instance.KillButton.renderer.sprite;
-
-            m_collider = gameObject.AddComponent<BoxCollider2D>();
-            m_collider.size = new Vector2(100, 100);
-
         }
 
         public void OnMouseUpAsButton()
@@ -57,7 +41,37 @@ namespace MoreRolesMod.Roles.Sheriff
 
         public void Update()
         {
+            KillButtonManager killButton = HudManager.Instance.KillButton;
+            if (PlayerControl.LocalPlayer.Data.AKOHOAJIHBE)
+            {
+                killButton.gameObject.SetActive(false);
+                killButton.isActive = false;
+                return; 
+            }
+            if (HudManager.Instance.UseButton != null && HudManager.Instance.UseButton.isActiveAndEnabled)
+            {
+                m_cooldown = Math.Max(0, m_cooldown - Time.deltaTime);
+                killButton.SetCoolDown(m_cooldown, 10f);
+                if (GameManager.ClosestPlayer.Distance < GameOptionsData.KillDistances[PlayerControl.GameOptions.KillDistance])
+                {
+                    killButton.SetTarget(GameManager.ClosestPlayer.Player);
+                }
+                else
+                {
+                    killButton.SetTarget(null);
+                }
 
+                if (Input.GetKeyInt(KeyCode.Q))
+                {
+                    killButton.PerformKill();
+                }
+            }
+        }
+
+        internal void ResetCooldown()
+        {
+            m_cooldown = 10f;
+            System.Console.WriteLine("Resetted cooldown");
         }
     }
 }

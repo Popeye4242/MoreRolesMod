@@ -21,7 +21,6 @@ namespace MoreRolesMod.Roles.Sheriff
         {
             var killer = PlayerTools.GetPlayerById(data.KillerId);
             var target = PlayerTools.GetPlayerById(data.TargetId);
-            System.Console.WriteLine("{0} murdered {1}", killer.name, target.name);
             killer.MurderPlayer(target);
         }
 
