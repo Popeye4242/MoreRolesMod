@@ -1,4 +1,6 @@
 ﻿using HarmonyLib;
+using MoreRolesMod.Roles;
+using Reactor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +16,12 @@ namespace MoreRolesMod.Patches
 
         public static void Postfix(Il2CppReferenceArray<GameData.Nested_1> FMAOEJEHPAO)
         {
-            System.Console.WriteLine("Set Infected being executed by {0}", PlayerControl.LocalPlayer.name);
+            Rpc<ResetGameRpc>.Instance.Send(data: true, immediately: true);
+            var players = PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.LGEGJEHCFOG);
+            foreach (var localPlayer in players)
+            {
+                Rpc<SetInfectedRpc>.Instance.Send(data: (localPlayer, Role.Sheriff), immediately: true);
+            }
         }
     }
 }

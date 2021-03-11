@@ -1,4 +1,4 @@
-﻿using MoreRolesMod.Rpc;
+﻿using MoreRolesMod.Roles.Sheriff;
 using Reactor;
 using System;
 using System.Collections.Generic;
@@ -7,10 +7,10 @@ using UnhollowerBaseLib.Attributes;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace MoreRolesMod.Components
+namespace MoreRolesMod.Roles.Sheriff
 {
     [RegisterInIl2Cpp]
-    public class PopeyeButton : MonoBehaviour
+    public class SheriffKillButton : MonoBehaviour
     {
 
         private SpriteRenderer m_SpriteRenderer = null;
@@ -20,7 +20,7 @@ namespace MoreRolesMod.Components
         public MoreRolesPlugin Plugin { get; internal set; }
         public SpriteRenderer renderer => m_SpriteRenderer;
 
-        public PopeyeButton(IntPtr handle) : base(handle)
+        public SheriffKillButton(IntPtr handle) : base(handle)
         {
         }
 
@@ -33,21 +33,24 @@ namespace MoreRolesMod.Components
             gameObject.transform.position = corner + new Vector3(scale.x, scale.y);
 
             m_SpriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-            m_SpriteRenderer.sprite = Assets.Popeye;
+            m_SpriteRenderer.sprite = HudManager.Instance.KillButton.renderer.sprite;
 
             m_collider = gameObject.AddComponent<BoxCollider2D>();
             m_collider.size = new Vector2(100, 100);
 
         }
 
-        public void OnMouseDown()
+        public void OnMouseUpAsButton()
         {
-            System.Console.WriteLine("Squished that cat"); ;
+            if (PlayerControl.LocalPlayer.HasRole(Role.Sheriff))
+            {
+                var data = (Killer: PlayerControl.LocalPlayer.PlayerId, Target: GameManager.ClosestPlayer.Player.PlayerId);
+                Rpc<SheriffMurderRpc>.Instance.Send(data, immediately: true);
+            }
         }
 
         public void Start()
         {
-            gameObject.SetActive(true);
         }
 
 

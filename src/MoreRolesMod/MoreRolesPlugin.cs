@@ -1,22 +1,10 @@
 ﻿using BepInEx;
-using BepInEx.Configuration;
 using BepInEx.IL2CPP;
 using HarmonyLib;
-using System;
-using System.Linq;
-using System.Net;
 using Reactor;
 using MoreRolesMod.Config;
-using MoreRolesMod;
-using Reactor.Unstrip;
-using System.IO;
-using UnityEngine;
-using Reactor.Extensions;
-using System.Reflection;
 using BepInEx.Logging;
 using Reactor.Patches;
-using UnityEngine.SceneManagement;
-using MoreRolesMod.Components;
 
 namespace MoreRolesMod
 {

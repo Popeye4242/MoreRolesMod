@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MoreRolesMod.Hud
+namespace MoreRolesMod
 {
-    public class PopeyeButton
+    public enum Role : byte
     {
+        Sheriff  = 1
     }
 }

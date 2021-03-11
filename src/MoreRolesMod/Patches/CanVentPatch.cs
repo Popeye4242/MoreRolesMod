@@ -12,8 +12,9 @@ namespace MoreRolesMod.Patches
         public static bool Prefix(Vent __instance, ref float __result, [HarmonyArgument(0)] GameData.Nested_1 pc,
         [HarmonyArgument(1)] out bool canUse, [HarmonyArgument(2)] out bool couldUse)
         {
+            // TODO: evaluate if I need this patch
             PlayerControl localPlayer = pc.CBEJMNMADDB;
-            couldUse  = true;
+            couldUse  = false;
             canUse = couldUse;
             float num = Vector2.Distance(localPlayer.GetTruePosition(), __instance.transform.position);
             canUse &= num <= __instance.UsableDistance;
