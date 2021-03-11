@@ -6,7 +6,6 @@ Currently the mod adds a sheriff role to the game. The game settings cannot be c
 
 ## Third Party Project Code included in this repository
 - https://github.com/NotHunter101/ExtraRolesAmongUs
-- https://github.com/CrowdedMods/CrowdedMod
 
 ## License
 GPL-3.0 
