@@ -9,11 +9,11 @@ namespace MoreRolesMod.Patches
     [HarmonyPatch(typeof(Vent), nameof(Vent.CanUse))]
     class CanVentPatch
     {
-        public static bool Prefix(Vent __instance, ref float __result, [HarmonyArgument(0)] GameData.Nested_1 pc,
+        public static bool Prefix(Vent __instance, ref float __result, [HarmonyArgument(0)] GameData.PlayerInfo pc,
         [HarmonyArgument(1)] out bool canUse, [HarmonyArgument(2)] out bool couldUse)
         {
             // TODO: evaluate if I need this patch
-            PlayerControl localPlayer = pc.CBEJMNMADDB;
+            PlayerControl localPlayer = pc.Object;
             couldUse  = false;
             canUse = couldUse;
             float num = Vector2.Distance(localPlayer.GetTruePosition(), __instance.transform.position);

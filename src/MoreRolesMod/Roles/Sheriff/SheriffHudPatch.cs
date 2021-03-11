@@ -13,7 +13,7 @@ namespace MoreRolesMod.Roles.Sheriff
         {
 
             HudManager = __instance;
-            if (AmongUsClient.Instance.GameMode == GameModes.FreePlay || AmongUsClient.Instance.GameState == InnerNetClient.Nested_0.Started)
+            if (AmongUsClient.Instance.GameMode == GameModes.FreePlay || AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started)
             {
                 GameManager.UpdateGame();
                 if (PlayerControl.LocalPlayer.HasRole(Role.Sheriff))

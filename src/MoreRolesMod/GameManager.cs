@@ -32,7 +32,7 @@ namespace MoreRolesMod
         {
             var players = PlayerControl.AllPlayerControls
                 .ToArray()
-                .Where(x => !x.Data.AKOHOAJIHBE && x != PlayerControl.LocalPlayer)
+                .Where(x => !x.Data.IsDead && x != PlayerControl.LocalPlayer)
                 .Select(x => (Player: x, Distance: GetDistanceBetweenPlayers(x, PlayerControl.LocalPlayer)));
             if (players.Any())
             {

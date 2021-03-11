@@ -14,13 +14,13 @@ namespace MoreRolesMod.Roles.Sheriff
             if (!PlayerControl.LocalPlayer.HasRole(Role.Sheriff))
                 return false;
 
-            if (PlayerControl.LocalPlayer.Data.AKOHOAJIHBE)
+            if (PlayerControl.LocalPlayer.Data.IsDead)
                 return false;
 
             var currentTarget = HudManager.Instance.KillButton.CurrentTarget;
 
             Rpc<SheriffMurderRpc>.Instance.Send(data: (Killer: PlayerControl.LocalPlayer.PlayerId, Target: currentTarget.PlayerId), immediately: true);
-            if (!currentTarget.Data.LGEGJEHCFOG)
+            if (!currentTarget.Data.IsImpostor)
             {
                 Rpc<SheriffMurderRpc>.Instance.Send(data: (Killer: PlayerControl.LocalPlayer.PlayerId, Target: PlayerControl.LocalPlayer.PlayerId), immediately: true);
             }

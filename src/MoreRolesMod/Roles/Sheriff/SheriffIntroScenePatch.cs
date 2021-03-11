@@ -7,15 +7,15 @@ using UnityEngine;
 
 namespace MoreRolesMod.Patches
 {
-    [HarmonyPatch(typeof(IntroCutscene.Nested_0), nameof(IntroCutscene.Nested_0.MoveNext))]
+    [HarmonyPatch(typeof(IntroCutscene.CoBegin__d), nameof(IntroCutscene.CoBegin__d.MoveNext))]
     public class SheriffIntroScenePatch
     {
-        static bool Prefix(IntroCutscene.Nested_0 __instance)
+        static bool Prefix(IntroCutscene.CoBegin__d __instance)
         {
             return true;
         }
 
-        static void Postfix(IntroCutscene.Nested_0 __instance)
+        static void Postfix(IntroCutscene.CoBegin__d __instance)
         {
             if (PlayerControl.LocalPlayer.HasRole(Role.Sheriff))
             {

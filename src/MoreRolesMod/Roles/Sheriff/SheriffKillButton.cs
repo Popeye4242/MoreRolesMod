@@ -42,7 +42,7 @@ namespace MoreRolesMod.Roles.Sheriff
         public void Update()
         {
             KillButtonManager killButton = HudManager.Instance.KillButton;
-            if (PlayerControl.LocalPlayer.Data.AKOHOAJIHBE)
+            if (PlayerControl.LocalPlayer.Data.IsDead)
             {
                 killButton.gameObject.SetActive(false);
                 killButton.isActive = false;
