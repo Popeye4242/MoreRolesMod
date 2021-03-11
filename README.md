@@ -6,5 +6,5 @@ Download latest version [here](https://jenkins.kynet.dev/job/MoreRolesMod/job/ma
 - https://github.com/CrowdedMods/CrowdedMod
 
 ## License
-GPL-3.0 (Derived from Woody's Sheriff Mod)
+GPL-3.0 
 
