@@ -38,8 +38,6 @@ namespace MoreRolesMod.Roles.Sheriff
         {
             SheriffKillButton = HudManager.KillButton;
             SheriffKillButton.gameObject.AddComponent<SheriffKillButton>();
-            // change player name color 
-            PlayerControl.LocalPlayer.nameText.Color = Sheriff.SheriffColor;
         }
     }
 }

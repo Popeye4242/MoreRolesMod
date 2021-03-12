@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MoreRolesMod.Utility
@@ -10,5 +11,10 @@ namespace MoreRolesMod.Utility
         {
             return AllPlayerControls.FirstOrDefault(player => player.PlayerId == playerId);
         }
+        internal static PlayerControl GetPlayerById(sbyte playerId)
+        {
+            return GetPlayerById((byte)playerId);
+        }
+
     }
 }
