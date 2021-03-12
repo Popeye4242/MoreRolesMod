@@ -11,6 +11,8 @@ namespace MoreRolesMod.Roles.Sheriff
     {
         public static bool Prefix()
         {
+            if (PlayerControl.LocalPlayer.Data.IsImpostor)
+                return true;
             if (!PlayerControl.LocalPlayer.HasRole(Role.Sheriff))
                 return false;
 
@@ -18,6 +20,8 @@ namespace MoreRolesMod.Roles.Sheriff
                 return false;
 
             var currentTarget = HudManager.Instance.KillButton.CurrentTarget;
+            if (currentTarget == null)
+                return false;
 
             Rpc<SheriffMurderRpc>.Instance.Send(data: (Killer: PlayerControl.LocalPlayer.PlayerId, Target: currentTarget.PlayerId), immediately: true);
             if (!currentTarget.Data.IsImpostor)
@@ -27,6 +31,7 @@ namespace MoreRolesMod.Roles.Sheriff
 
             var killButton = HudManager.Instance.KillButton.gameObject.GetComponent<SheriffKillButton>();
             killButton?.ResetCooldown();
+
             return false;
         }
     }

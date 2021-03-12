@@ -15,5 +15,10 @@ namespace MoreRolesMod
             }
             return false;
         }
+
+        public static bool HasAnyRole(this PlayerControl player)
+        {
+            return GameManager.PlayerRoles.ContainsKey(player.PlayerId);
+        }
     }
 }

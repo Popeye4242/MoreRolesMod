@@ -5,6 +5,7 @@ using Reactor;
 using MoreRolesMod.Config;
 using BepInEx.Logging;
 using Reactor.Patches;
+using Essentials.Options;
 
 namespace MoreRolesMod
 {
@@ -40,6 +41,9 @@ namespace MoreRolesMod
             LoadGameConfig();
             AddCustomServerRegion();
             RegisterColors();
+
+            // Disables the twitch advertisement in the game lobby
+            CustomOption.ShamelessPlug = false;
 
             ReactorVersionShower.TextUpdated += UpdatReactVersionShowerText;
             RegisterInIl2CppAttribute.Register();

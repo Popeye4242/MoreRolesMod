@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoreRolesMod.Config;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,16 +9,13 @@ namespace MoreRolesMod
     {
         public static Dictionary<byte, Role> PlayerRoles { get; } = new Dictionary<byte, Role>();
         public static (PlayerControl Player, double Distance) ClosestPlayer { get; private set; }
+        public static LobbyConfig Config { get; private set; }
 
         internal static void ResetGame()
         {
             PlayerRoles.Clear();
             ClosestPlayer = default;
-        }
-
-        internal static void UpdateGame()
-        {
-            UpdateClosestPlayer();
+            Config = MoreRolesPlugin.Instance.GetLobbyConfig();
         }
 
         private static double GetDistanceBetweenPlayers(PlayerControl player, PlayerControl refplayer)
@@ -29,7 +27,7 @@ namespace MoreRolesMod
                              (refpos[1] - playerpos[1]) * (refpos[1] - playerpos[1]));
         }
 
-        private static void UpdateClosestPlayer()
+        internal static void UpdateClosestPlayer()
         {
             var players = PlayerControl.AllPlayerControls
                 .ToArray()

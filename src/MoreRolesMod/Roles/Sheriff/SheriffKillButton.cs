@@ -22,15 +22,7 @@ namespace MoreRolesMod.Roles.Sheriff
 
         public void Awake()
         {
-        }
-
-        public void OnMouseUpAsButton()
-        {
-            if (PlayerControl.LocalPlayer.HasRole(Role.Sheriff))
-            {
-                var data = (Killer: PlayerControl.LocalPlayer.PlayerId, Target: GameManager.ClosestPlayer.Player.PlayerId);
-                Rpc<SheriffMurderRpc>.Instance.Send(data, immediately: true);
-            }
+            System.Console.WriteLine("Sheriff KillButton behaviour added");
         }
 
         public void Start()
@@ -41,6 +33,7 @@ namespace MoreRolesMod.Roles.Sheriff
 
         public void Update()
         {
+            System.Console.WriteLine("Updated kill button");
             KillButtonManager killButton = HudManager.Instance.KillButton;
             if (PlayerControl.LocalPlayer.Data.IsDead)
             {
@@ -50,8 +43,11 @@ namespace MoreRolesMod.Roles.Sheriff
             }
             if (HudManager.Instance.UseButton != null && HudManager.Instance.UseButton.isActiveAndEnabled)
             {
+                GameManager.UpdateClosestPlayer();
+                killButton.gameObject.SetActive(true);
+                killButton.isActive = true;
                 m_cooldown = Math.Max(0, m_cooldown - Time.deltaTime);
-                killButton.SetCoolDown(m_cooldown, 10f);
+                killButton.SetCoolDown(m_cooldown, GameManager.Config.SheriffKillCooldown);
                 if (GameManager.ClosestPlayer.Distance < GameOptionsData.KillDistances[PlayerControl.GameOptions.KillDistance])
                 {
                     killButton.SetTarget(GameManager.ClosestPlayer.Player);
@@ -68,9 +64,14 @@ namespace MoreRolesMod.Roles.Sheriff
             }
         }
 
+        public void OnDestroy()
+        {
+            System.Console.WriteLine("Sheriff button destroyed");
+        }
+
         internal void ResetCooldown()
         {
-            m_cooldown = 10f;
+            m_cooldown = GameManager.Config.SheriffKillCooldown;
             System.Console.WriteLine("Resetted cooldown");
         }
     }

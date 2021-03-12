@@ -15,7 +15,6 @@ namespace MoreRolesMod.Roles.Sheriff
             HudManager = __instance;
             if (AmongUsClient.Instance.GameMode == GameModes.FreePlay || AmongUsClient.Instance.GameState == InnerNetClient.GameStates.Started)
             {
-                GameManager.UpdateGame();
                 if (PlayerControl.LocalPlayer.HasRole(Role.Sheriff))
                 {
                     if (SheriffKillButton == null)
@@ -29,12 +28,11 @@ namespace MoreRolesMod.Roles.Sheriff
 
         private static void AddPopeyeButton()
         {
-            var killButton = SheriffKillButton = HudManager.KillButton;
-            HudManager.KillButton.gameObject.AddComponent<SheriffKillButton>();;
-
-            killButton.gameObject.SetActive(true);
-            killButton.isActive = true;
-
+            System.Console.WriteLine("Adding Killbutton");
+            SheriffKillButton = HudManager.KillButton;
+            SheriffKillButton.gameObject.SetActive(true);
+            SheriffKillButton.isActive = true;
+            HudManager.KillButton.gameObject.AddComponent<SheriffKillButton>();
             // change player name color 
             PlayerControl.LocalPlayer.nameText.Color = Sheriff.SheriffColor;
         }
