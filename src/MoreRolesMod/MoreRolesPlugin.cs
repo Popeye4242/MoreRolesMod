@@ -36,7 +36,6 @@ namespace MoreRolesMod
 
         public override void Load()
         {
-            Log.LogMessage("Launching More Roles Mod");
             LoadAssets();
             LoadGameConfig();
             AddCustomServerRegion();

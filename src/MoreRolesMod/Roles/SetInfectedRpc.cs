@@ -19,7 +19,6 @@ namespace MoreRolesMod.Roles
         {
             if (AmongUsClient.Instance.GetHost().Id == innerNetObject.OwnerId)
             {
-                System.Console.WriteLine("setting "+ data.Player.name + " to role " + data.Role);
                 GameManager.PlayerRoles[data.PlayerId] = data.Role;
             }
             else

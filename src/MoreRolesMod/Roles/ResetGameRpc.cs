@@ -1,6 +1,8 @@
 ﻿using Hazel;
 using MoreRolesMod.Roles.Sheriff;
+using MoreRolesMod.Utility;
 using Reactor;
+using System.Linq;
 
 namespace MoreRolesMod.Roles
 {
@@ -18,7 +20,6 @@ namespace MoreRolesMod.Roles
         {
             HudUpdatePatch.SheriffKillButton = null;
             GameManager.ResetGame();
-            System.Console.WriteLine("Resetted Game");
         }
 
         public override bool Read(MessageReader reader)

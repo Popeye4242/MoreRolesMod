@@ -11,7 +11,6 @@ namespace MoreRolesMod
 
         private async void UpdatReactVersionShowerText(TextRenderer text)
         {
-            System.Console.WriteLine("Updating version shower");
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             string strText = "[FFFFFFFF]More Roles Mod v" + version.ToString(3);
             try

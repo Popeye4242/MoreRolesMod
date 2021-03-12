@@ -22,7 +22,6 @@ namespace MoreRolesMod.Roles.Sheriff
 
         public void Awake()
         {
-            System.Console.WriteLine("Sheriff KillButton behaviour added");
         }
 
         public void Start()
@@ -33,19 +32,10 @@ namespace MoreRolesMod.Roles.Sheriff
 
         public void Update()
         {
-            System.Console.WriteLine("Updated kill button");
             KillButtonManager killButton = HudManager.Instance.KillButton;
-            if (PlayerControl.LocalPlayer.Data.IsDead)
-            {
-                killButton.gameObject.SetActive(false);
-                killButton.isActive = false;
-                return; 
-            }
             if (HudManager.Instance.UseButton != null && HudManager.Instance.UseButton.isActiveAndEnabled)
             {
                 GameManager.UpdateClosestPlayer();
-                killButton.gameObject.SetActive(true);
-                killButton.isActive = true;
                 m_cooldown = Math.Max(0, m_cooldown - Time.deltaTime);
                 killButton.SetCoolDown(m_cooldown, GameManager.Config.SheriffKillCooldown);
                 if (GameManager.ClosestPlayer.Distance < GameOptionsData.KillDistances[PlayerControl.GameOptions.KillDistance])
@@ -64,15 +54,9 @@ namespace MoreRolesMod.Roles.Sheriff
             }
         }
 
-        public void OnDestroy()
-        {
-            System.Console.WriteLine("Sheriff button destroyed");
-        }
-
         internal void ResetCooldown()
         {
             m_cooldown = GameManager.Config.SheriffKillCooldown;
-            System.Console.WriteLine("Resetted cooldown");
         }
     }
 }

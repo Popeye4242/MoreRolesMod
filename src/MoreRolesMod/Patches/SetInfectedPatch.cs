@@ -19,7 +19,6 @@ namespace MoreRolesMod.Patches
 
         public static void Postfix(Il2CppReferenceArray<GameData.PlayerInfo> FMAOEJEHPAO)
         {
-            System.Console.WriteLine("Resetting Game");
             // make sure the lobby config was loaded before calculating chances
             Rpc<ResetGameRpc>.Instance.Send(data: true, immediately: true);
 
@@ -28,7 +27,6 @@ namespace MoreRolesMod.Patches
             
             if (shouldSheriffSpawn)
             {
-                System.Console.WriteLine("Spawning Sheriff");
                 var crewmate = Crewmates.ElementAt(Random.Next(0, Crewmates.Count()));
                 Rpc<SetInfectedRpc>.Instance.Send(data: (crewmate, Role.Sheriff), immediately: true);
             }
