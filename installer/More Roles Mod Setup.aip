@@ -89,6 +89,7 @@
     <ROW Component="DefaultWsdlHelpGenerator.aspx" ComponentId="{8756A37F-5134-455C-8A1B-163F624BB12D}" Directory_="__Dir" Attributes="0" KeyPath="DefaultWsdlHelpGenerator.aspx" Type="0"/>
     <ROW Component="DefaultWsdlHelpGenerator.aspx_1" ComponentId="{B997654C-A164-445E-A667-D8A6729EA18E}" Directory_="__1_Dir" Attributes="0" KeyPath="DefaultWsdlHelpGenerator.aspx_1" Type="0"/>
     <ROW Component="DefaultWsdlHelpGenerator.aspx_2" ComponentId="{3DF7BD5D-E022-4DF9-A345-038243D8504A}" Directory_="__2_Dir" Attributes="0" KeyPath="DefaultWsdlHelpGenerator.aspx_2" Type="0"/>
+    <ROW Component="Essentials2021.3.5s.dll" ComponentId="{2C8B8E85-C3FE-4A00-A1CD-9CE3F81CC4E7}" Directory_="plugins_Dir" Attributes="0" KeyPath="Essentials2021.3.5s.dll"/>
     <ROW Component="Harmony.dll" ComponentId="{72C1096B-0F26-40FF-927F-1F2F04BF382C}" Directory_="core_Dir" Attributes="0" KeyPath="Harmony.dll"/>
     <ROW Component="Iced.dll" ComponentId="{31CBEA45-9108-4FCE-A235-2D5A82F8E9E9}" Directory_="core_Dir" Attributes="0" KeyPath="Iced.dll"/>
     <ROW Component="Il2Cpp.TlsAdapter.dll" ComponentId="{E59230E4-F87E-41FC-BA5B-2ED59D081A88}" Directory_="core_Dir" Attributes="0" KeyPath="Il2Cpp.TlsAdapter.dll"/>
@@ -318,6 +319,7 @@
     <ROW File="doorstop_config.ini" Component_="steam_appid.txt" FileName="DOORST~1.INI|doorstop_config.ini" Attributes="0" SourcePath="..\Lib\doorstop_config.ini" SelfReg="false"/>
     <ROW File="browscap.ini" Component_="config" FileName="browscap.ini" Attributes="0" SourcePath="..\Lib\mono\MonoBleedingEdge\etc\mono\browscap.ini" SelfReg="false"/>
     <ROW File="morerolesmod" Component_="morerolesmod" FileName="MORERO~1|morerolesmod" Attributes="0" SourcePath="..\Assets\morerolesmod" SelfReg="false"/>
+    <ROW File="Essentials2021.3.5s.dll" Component_="Essentials2021.3.5s.dll" FileName="ESSENT~1.DLL|Essentials-2021.3.5s.dll" Attributes="0" SourcePath="..\Lib\BepInEx\plugins\Essentials-2021.3.5s.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
     <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
@@ -586,6 +588,7 @@
     <ROW Feature_="MainFeature" Component_="AI_DisableModify"/>
     <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
     <ROW Feature_="MainFeature" Component_="morerolesmod"/>
+    <ROW Feature_="MainFeature" Component_="Essentials2021.3.5s.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
     <ROW Name="icons8amongus50.exe" SourcePath="icons8-among-us-50.ico" Index="0"/>
