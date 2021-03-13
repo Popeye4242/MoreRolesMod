@@ -20,6 +20,8 @@ namespace MoreRolesMod.Roles
         {
             HudUpdatePatch.SheriffKillButton = null;
             GameManager.ResetGame();
+            Morphling.Morphling.ResetGame();
+            Sheriff.Sheriff.ResetGame();
         }
 
         public override bool Read(MessageReader reader)

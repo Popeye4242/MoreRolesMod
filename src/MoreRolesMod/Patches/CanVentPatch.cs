@@ -14,7 +14,7 @@ namespace MoreRolesMod.Patches
         {
             // TODO: evaluate if I need this patch
             PlayerControl localPlayer = pc.Object;
-            couldUse  = false;
+            couldUse  = localPlayer.Data.IsImpostor && !localPlayer.HasRole(Role.Morphling);
             canUse = couldUse;
             float num = Vector2.Distance(localPlayer.GetTruePosition(), __instance.transform.position);
             canUse &= num <= __instance.UsableDistance;

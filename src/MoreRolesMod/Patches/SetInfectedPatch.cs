@@ -16,19 +16,34 @@ namespace MoreRolesMod.Patches
         public static Random Random = new Random(Guid.NewGuid().GetHashCode());
 
         static IEnumerable<PlayerControl> Crewmates => PlayerControl.AllPlayerControls.ToArray().Where(x => !x.Data.IsImpostor && !x.HasAnyRole());
+        static IEnumerable<PlayerControl> Impostors => PlayerControl.AllPlayerControls.ToArray().Where(x => x.Data.IsImpostor && !x.HasAnyRole());
 
         public static void Postfix(Il2CppReferenceArray<GameData.PlayerInfo> FMAOEJEHPAO)
         {
             // make sure the lobby config was loaded before calculating chances
             Rpc<ResetGameRpc>.Instance.Send(data: true, immediately: true);
 
-            int sheriffSpawnChance = Random.Next(0, 100);
-            bool shouldSheriffSpawn = sheriffSpawnChance < GameManager.Config.SheriffSpawnChance;
-            
-            if (shouldSheriffSpawn)
+
+            var roles = new List<(Role Role, float Chance, bool TeamImpostor)>
             {
-                var crewmate = Crewmates.ElementAt(Random.Next(0, Crewmates.Count()));
-                Rpc<SetInfectedRpc>.Instance.Send(data: (crewmate, Role.Sheriff), immediately: true);
+                (Role.Sheriff, GameManager.Config.SheriffSpawnChance, false),
+                (Role.Morphling, GameManager.Config.MorphlingSpawnChance, true)
+            };
+            foreach (var role in roles)
+            {
+
+                int roleSpawnChance = Random.Next(0, 100);
+                bool shouldRoleSpawn = roleSpawnChance < role.Chance;
+
+                if (shouldRoleSpawn)
+                {
+                    var team = role.TeamImpostor ? Impostors : Crewmates;
+                    if (!team.Any()) 
+                        continue;
+                    
+                    var lotteryWinner = team.ElementAt(Random.Next(0, team.Count()));
+                    Rpc<SetInfectedRpc>.Instance.Send(data: (lotteryWinner, role.Role), immediately: true);
+                }
             }
         }
     }

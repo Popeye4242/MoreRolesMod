@@ -20,6 +20,10 @@ namespace MoreRolesMod.Roles
             if (AmongUsClient.Instance.GetHost().Id == innerNetObject.OwnerId)
             {
                 GameManager.PlayerRoles[data.PlayerId] = data.Role;
+                if (data.Role == Role.Morphling)
+                {
+                    Morphling.Morphling.MorphlingPlayer = data.Player;
+                }
             }
             else
             {

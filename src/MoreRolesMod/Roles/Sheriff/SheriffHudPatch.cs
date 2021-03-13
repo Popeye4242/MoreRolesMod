@@ -22,7 +22,7 @@ namespace MoreRolesMod.Roles.Sheriff
                 {
                     if (SheriffKillButton == null)
                     {
-                        AddPopeyeButton();
+                        AddSheriffButton();
                     }
                     else
                     {
@@ -34,7 +34,7 @@ namespace MoreRolesMod.Roles.Sheriff
         }
 
 
-        private static void AddPopeyeButton()
+        private static void AddSheriffButton()
         {
             SheriffKillButton = HudManager.KillButton;
             SheriffKillButton.gameObject.AddComponent<SheriffKillButton>();

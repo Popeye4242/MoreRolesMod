@@ -6,6 +6,7 @@ namespace MoreRolesMod
 {
     public enum Role : byte
     {
-        Sheriff  = 1
+        Sheriff,
+        Morphling
     }
 }
