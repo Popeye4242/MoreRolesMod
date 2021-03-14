@@ -27,7 +27,7 @@ namespace MoreRolesMod.Roles.Morphling
             m_killButton.renderer.sprite = HudManager.Instance.UseButton.UseButton.sprite;
             m_killButton.renderer.enabled = true;
             m_killButton.renderer.color = Palette.EnabledColor;
-            m_killButton.renderer.material.SetFloat("_Desat", 0f);
+            m_killButton.renderer.material.SetFloat("_Desat", 0f);  
             m_killButton.transform.position = new Vector3(m_killButton.transform.position.x, HudManager.Instance.ReportButton.transform.position.y);
             m_sampleButton = m_killButton.GetComponent<PassiveButton>();
             m_sampleButton.OnClick.RemoveAllListeners();
@@ -52,9 +52,12 @@ namespace MoreRolesMod.Roles.Morphling
             GameManager.UpdateClosestPlayer();
             m_cooldown -= Time.deltaTime;
             m_cooldown = Math.Max(0f, m_cooldown);
-            m_killButton.SetCoolDown(m_cooldown, GameManager.Config.MorphlingMorphCooldown);
+            m_killButton.SetCoolDown(m_cooldown, PlayerControl.GameOptions.KillCooldown);
 
             var closestPlayer = GameManager.ClosestPlayer;
+            if (closestPlayer == default)
+                return;
+
             if (closestPlayer.Distance < GameOptionsData.KillDistances[PlayerControl.GameOptions.KillDistance])
             {
                 m_killButton.SetTarget(GameManager.ClosestPlayer.Player);
@@ -65,7 +68,7 @@ namespace MoreRolesMod.Roles.Morphling
         {
             Morphling.SampledPlayer = PlayerTools.GetPlayerById(data);
             Morphling.IsMorphed = true;
-            m_cooldown = GameManager.Config.MorphlingMorphCooldown;
+            m_cooldown = PlayerControl.GameOptions.KillCooldown;
         }
     }
 }

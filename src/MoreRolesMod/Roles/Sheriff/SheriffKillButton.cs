@@ -37,10 +37,15 @@ namespace MoreRolesMod.Roles.Sheriff
             {
                 GameManager.UpdateClosestPlayer();
                 m_cooldown = Math.Max(0, m_cooldown - Time.deltaTime);
-                killButton.SetCoolDown(m_cooldown, GameManager.Config.SheriffKillCooldown);
-                if (GameManager.ClosestPlayer.Distance < GameOptionsData.KillDistances[PlayerControl.GameOptions.KillDistance])
+                killButton.SetCoolDown(m_cooldown, PlayerControl.GameOptions.KillCooldown);
+
+                var closestPlayer = GameManager.ClosestPlayer;
+                if (closestPlayer == default)
+                    return;
+
+                if (closestPlayer.Distance < GameOptionsData.KillDistances[PlayerControl.GameOptions.KillDistance])
                 {
-                    killButton.SetTarget(GameManager.ClosestPlayer.Player);
+                    killButton.SetTarget(closestPlayer.Player);
                 }
                 else
                 {
@@ -56,7 +61,7 @@ namespace MoreRolesMod.Roles.Sheriff
 
         internal void ResetCooldown()
         {
-            m_cooldown = GameManager.Config.SheriffKillCooldown;
+            m_cooldown = PlayerControl.GameOptions.KillCooldown;
         }
     }
 }

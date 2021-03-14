@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace MoreRolesMod
 {
@@ -18,31 +19,34 @@ namespace MoreRolesMod
             Config = MoreRolesPlugin.Instance.GetLobbyConfig();
         }
 
-        private static double GetDistanceBetweenPlayers(PlayerControl player, PlayerControl refplayer)
-        {
-            var refpos = refplayer.GetTruePosition();
-            var playerpos = player.GetTruePosition();
-
-            return Math.Sqrt((refpos[0] - playerpos[0]) * (refpos[0] - playerpos[0]) +
-                             (refpos[1] - playerpos[1]) * (refpos[1] - playerpos[1]));
-        }
-
         internal static void UpdateClosestPlayer()
         {
             var players = PlayerControl.AllPlayerControls
                 .ToArray()
-                .Where(x => !x.Data.IsDead && !x.AmOwner)
-                .Select(x => (Player: x, Distance: GetDistanceBetweenPlayers(x, PlayerControl.LocalPlayer)));
+                .Where(x => !x.Data.IsDead && !x.AmOwner && x.Visible)
+                .Where(IsNothingBetweenPlayers)
+                .Select(x => (Player: x, Distance: Vector3.Distance(PlayerControl.LocalPlayer.transform.position, x.transform.position)));
             if (players.Any())
             {
                 var min = players.Min(x => x.Distance);
                 ClosestPlayer = players.First(x => x.Distance == min);
+                System.Console.WriteLine("Closest player is "+ ClosestPlayer.Player.name);
             }
             else
             {
-                // game is not ready yet
+                ClosestPlayer = default;
             }
 
+        }
+
+        public static bool IsNothingBetweenPlayers(PlayerControl otherPlayer)
+        {
+            var layer = LayerMask.GetMask(new string[]
+            {
+                "Ship",
+                "Objects"
+            });
+            return !PhysicsHelpers.AnythingBetween(PlayerControl.LocalPlayer.GetTruePosition(), otherPlayer.GetTruePosition(), layer, false);
         }
     }
 }

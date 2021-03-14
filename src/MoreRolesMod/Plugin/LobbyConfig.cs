@@ -8,20 +8,29 @@ namespace MoreRolesMod
 {
     public partial class MoreRolesPlugin
     {
+        public CustomStringOption GamePreset = CustomOption.AddString(id: nameof(GamePreset), name: DisplayStrings.GamePreset, saveValue: true, values: new[]
+        {
+            DisplayStrings.Sheriff,
+            DisplayStrings.Morphling,
+            DisplayStrings.CustomGamePreset
+        });
+
         public CustomNumberOption SheriffSpawnChance = CustomOption.AddNumber(id: nameof(SheriffSpawnChance), name: "Sheriff Spawn Chance", saveValue: true, value: 100f, min: 0f, max: 100f, increment: 10f);
-        public CustomNumberOption SheriffKillCooldown = CustomOption.AddNumber(id: nameof(SheriffKillCooldown), name: "Sheriff Kill Cooldown", saveValue: true, value: 30f, min: 10f, max: 60f, increment: 2.5f);
 
         public CustomNumberOption MorphlingSpawnChance = CustomOption.AddNumber(id: nameof(MorphlingSpawnChance), name: "Morphling Spawn Chance", saveValue: true, value: 100f, min: 0f, max: 100f, increment: 10f);
-        public CustomNumberOption MorphlingMorphCooldown = CustomOption.AddNumber(id: nameof(MorphlingMorphCooldown), name: "Morphling Morph Cooldown", saveValue: true, value: 30f, min: 10f, max: 60f, increment: 2.5f);
 
         public LobbyConfig GetLobbyConfig()
         {
             LobbyConfig config = new LobbyConfig();
+            GamePreset.OnValueChanged += OnGamePresetChange;
             config.SheriffSpawnChance = SheriffSpawnChance.GetValue();
-            config.SheriffKillCooldown = SheriffKillCooldown.GetValue();
-            config.MorphlingMorphCooldown = MorphlingMorphCooldown.GetValue();
             config.MorphlingSpawnChance = MorphlingSpawnChance.GetValue();
             return config;
-        } 
+        }
+
+        private void OnGamePresetChange(object sender, OptionOnValueChangedEventArgs e)
+        {
+            System.Console.WriteLine(e.Value);
+        }
     }
 }
