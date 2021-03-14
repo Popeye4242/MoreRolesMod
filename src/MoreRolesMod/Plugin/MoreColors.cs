@@ -54,9 +54,9 @@ namespace MoreRolesMod
                 new Color32(236, 61, 255, byte.MaxValue),
                 new Color32(61, 255, 181, byte.MaxValue)
             };
-            Palette.ShortColorNames = array;
-            Palette.PlayerColors = array2;
-            Palette.ShadowColors = array3;
+            //Palette.ShortColorNames = array;
+            //Palette.PlayerColors = array2;
+            //Palette.ShadowColors = array3;
         }
 
     }
