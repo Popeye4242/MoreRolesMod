@@ -39,9 +39,6 @@
 
 
   <ItemGroup>
-    <EmbeddedResource Update="Locales\Translations.de.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Locales\Translations.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Translations.Designer.cs</LastGenOutput>

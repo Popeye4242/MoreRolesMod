@@ -6,8 +6,8 @@ namespace MoreRolesMod
 {
     public enum GameMode
     {
-        Sheriff = 0,
-        Morphling = 1,
-        Custom
+        Custom = 0,
+        Sheriff = 1,
+        Morphling = 2
     }
 }
