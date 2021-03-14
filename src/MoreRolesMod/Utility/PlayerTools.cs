@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace MoreRolesMod.Utility
 {
@@ -15,6 +16,14 @@ namespace MoreRolesMod.Utility
         {
             return GetPlayerById((byte)playerId);
         }
-
+        public static bool IsAnythingBetween(Vector2 pos1, Vector2 pos2)
+        {
+            var layer = LayerMask.GetMask(new string[]
+            {
+                "Ship",
+                "Objects"
+            });
+            return !PhysicsHelpers.AnythingBetween(pos1, pos2, layer, false);
+        }
     }
 }

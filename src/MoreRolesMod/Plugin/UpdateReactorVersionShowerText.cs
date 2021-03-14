@@ -11,15 +11,14 @@ namespace MoreRolesMod
 
         private async void UpdatReactVersionShowerText(TextRenderer text)
         {
-            var version = Assembly.GetExecutingAssembly().GetName().Version;
-            string strText = "[FFFFFFFF]More Roles Mod v" + version.ToString(3);
+            string strText = "[FFFFFFFF]More Roles Mod v" + Version.ToString(3);
             try
             {
 
                 using (WebClient client = new WebClient())
                 {
                     string build = await client.DownloadStringTaskAsync(ArtifactBuildNumberUrl);
-                    if (!string.Equals(version.Build, build))
+                    if (!string.Equals(Version.Build, build))
                     {
                         strText += " ([FF1111FF]Update available[])";
                     }

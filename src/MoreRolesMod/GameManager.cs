@@ -1,4 +1,5 @@
 ﻿using MoreRolesMod.Config;
+using MoreRolesMod.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace MoreRolesMod
             var players = PlayerControl.AllPlayerControls
                 .ToArray()
                 .Where(x => !x.Data.IsDead && !x.AmOwner && x.Visible)
-                .Where(IsNothingBetweenPlayers)
+                .Where(x => PlayerTools.IsAnythingBetween(PlayerControl.LocalPlayer.GetTruePosition(), x.GetTruePosition()))
                 .Select(x => (Player: x, Distance: Vector3.Distance(PlayerControl.LocalPlayer.transform.position, x.transform.position)));
             if (players.Any())
             {
@@ -39,14 +40,6 @@ namespace MoreRolesMod
 
         }
 
-        public static bool IsNothingBetweenPlayers(PlayerControl otherPlayer)
-        {
-            var layer = LayerMask.GetMask(new string[]
-            {
-                "Ship",
-                "Objects"
-            });
-            return !PhysicsHelpers.AnythingBetween(PlayerControl.LocalPlayer.GetTruePosition(), otherPlayer.GetTruePosition(), layer, false);
-        }
+
     }
 }

@@ -30,7 +30,22 @@
 
 
   <ItemGroup>
-    <Folder Include="Roles\Jester\" />
+    <Compile Update="Locales\Translations.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Translations.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <EmbeddedResource Update="Locales\Translations.de.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Locales\Translations.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Translations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
     <Target Name="Copy" AfterTargets="Reobfuscate">

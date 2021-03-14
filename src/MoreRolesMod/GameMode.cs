@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MoreRolesMod.Presets
+namespace MoreRolesMod
 {
-    public enum GameModes
+    public enum GameMode
     {
         Sheriff = 0,
-        ExtraRoles = 1
+        Morphling = 1,
+        Custom
     }
 }

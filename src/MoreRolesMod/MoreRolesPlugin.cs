@@ -6,6 +6,8 @@ using MoreRolesMod.Config;
 using BepInEx.Logging;
 using Reactor.Patches;
 using Essentials.Options;
+using System;
+using System.Reflection;
 
 namespace MoreRolesMod
 {
@@ -33,6 +35,7 @@ namespace MoreRolesMod
         public static ManualLogSource Logger => Instance.Log;
 
         public static MainMenuManager MainMenuManager { get; internal set; }
+        public static Version Version { get; } = Assembly.GetExecutingAssembly().GetName().Version;
 
         public override void Load()
         {
@@ -43,6 +46,7 @@ namespace MoreRolesMod
 
             // Disables the twitch advertisement in the game lobby
             CustomOption.ShamelessPlug = false;
+            InitializeGameOptions();
 
             ReactorVersionShower.TextUpdated += UpdatReactVersionShowerText;
             RegisterInIl2CppAttribute.Register();
