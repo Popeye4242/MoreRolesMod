@@ -22,12 +22,11 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-- task: VSBuild@1
+- task: MSBuild@1
   inputs:
     solution: '$(solution)'
-    platform: '$(buildPlatform)'
+    msbuildArchitecture: 'x64'
     configuration: '$(buildConfiguration)'
-
 - task: AdvancedInstaller@2
   inputs:
     advinstVersion: '18.0'
