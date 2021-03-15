@@ -28,10 +28,14 @@ pipeline {
           bat "\"${tool 'Advanced Installer 18.0'}AdvancedInstaller.com\" /edit \"More Roles Mod Setup.aip\" /SetVersion ${CurrentModVersion}.${env.BUILD_NUMBER}"
           bat "\"${tool 'Advanced Installer 18.0'}AdvancedInstaller.com\" /build \"More Roles Mod Setup.aip\""
         }
-        dir ('installer-output') {
-          archiveArtifacts artifacts: 'More Roles Mod Setup.exe', excludes: ''
-        }
+        archiveArtifacts artifacts: 'installer-output/More Roles Mod Setup.exe', excludes: ''
+        archiveArtifacts artifacts: 'build/MoreRolesMod/netstandard2.1/MoreRolesMod.dll', excludes: ''
       }
+    }
+  }
+  post {
+    always {
+      cleanWs()
     }
   }
 }
