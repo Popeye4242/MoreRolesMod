@@ -11,6 +11,7 @@
   <PropertyGroup Condition="$(Configuration) == 'Release'">
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>..\..\CodeSigningCertificate.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <OutputPath>..\..\build\MoreRolesMod\</OutputPath>
