@@ -10,7 +10,7 @@ pipeline {
       steps {
         powershell "cp -r \"C:\\Among Us ${CurrentAmongUsVersion}\" \"Among Us\""
         withCredentials([string(credentialsId: 'CodeSignCertificate', variable: 'CERTIFICATE')]) {
-          powershell "cp \"${CERTIFICATE}\" /"
+          powershell "cp \"${CERTIFICATE}\" ."
         }
       }
     }
