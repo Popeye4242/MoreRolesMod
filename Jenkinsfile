@@ -18,7 +18,7 @@ pipeline {
       steps {
         dir('src') {
           bat "\"${tool 'dotnet'}dotnet\" restore MoreRolesMod.sln"
-          bat "\"${tool 'dotnet'}dotnet\" MoreRolesMod.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=${CurrentModVersion}.${env.BUILD_NUMBER}"
+          bat "\"${tool 'dotnet'}dotnet\" build MoreRolesMod.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=${CurrentModVersion}.${env.BUILD_NUMBER}"
         }
       }
     }
