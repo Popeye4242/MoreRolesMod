@@ -8,11 +8,6 @@
     <Description>A mod that adds additional roles to Among Us.</Description>
     <Authors>Patrick Spiegel</Authors>
   </PropertyGroup>
-  <PropertyGroup Condition="$(Configuration) == 'Release'">
-    <SignAssembly>true</SignAssembly>
-    <DelaySign>false</DelaySign>
-    <AssemblyOriginatorKeyFile>..\..\CodeSigningCertificate.pfx</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
   <PropertyGroup>
     <OutputPath>..\..\build\MoreRolesMod\</OutputPath>
   </PropertyGroup>
